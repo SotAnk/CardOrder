@@ -42,7 +42,7 @@ public class OrderTest {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Петров");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+71234567895");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
-        driver.findElement(By.tagName("button")).click();
+        driver.findElement(By.cssSelector("[type='button']")).click();
 
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
