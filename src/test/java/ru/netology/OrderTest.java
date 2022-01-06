@@ -1,6 +1,5 @@
 package ru.netology;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +31,15 @@ public class OrderTest {
         driver.quit();
         driver = null;
     }
+    @BeforeEach
+    void setUp1() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
 
+    }
     @Test
     void shouldSubmitRequestSuccess() {
         driver.get("http://localhost:9999");
