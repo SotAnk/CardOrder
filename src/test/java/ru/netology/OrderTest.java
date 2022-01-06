@@ -22,7 +22,11 @@ public class OrderTest {
 
     @BeforeEach
     public void setUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
 
     }
 
@@ -31,15 +35,7 @@ public class OrderTest {
         driver.quit();
         driver = null;
     }
-    @BeforeEach
-    void setUp1() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
 
-    }
     @Test
     void shouldSubmitRequestSuccess() {
         driver.get("http://localhost:9999");
